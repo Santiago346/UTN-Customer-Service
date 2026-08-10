@@ -3,6 +3,7 @@ package com.example.customer_service.service;
 import com.example.customer_service.client.ProductClient;
 import com.example.customer_service.dtos.CustomerDTO;
 import com.example.customer_service.dtos.CustomerRequestDTO;
+import com.example.customer_service.dtos.CustomerSaldoDTO;
 import com.example.customer_service.dtos.ProductDTO;
 import com.example.customer_service.exceptions.CustomerNotFoundException;
 import com.example.customer_service.mapper.CustomerMapper;
@@ -40,8 +41,8 @@ public class CustomerService {
 
     public CustomerDTO addCustomer(CustomerRequestDTO request) {
         Customer customer = customerMapper.toEntity(request);
-        Customer guardado = customerRepository.save(customer);
-        return customerMapper.toResponse(guardado);
+        Customer savedCustomer = customerRepository.save(customer);
+        return customerMapper.toResponse(savedCustomer);
     }
 
     public void deleteCustomer(Long id) {
@@ -49,6 +50,32 @@ public class CustomerService {
             throw new CustomerNotFoundException(id);
         }
         customerRepository.deleteById(id);
+    }
+
+    public CustomerDTO updateCustomer(Long id, CustomerRequestDTO request) {
+
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() ->
+                        new CustomerNotFoundException(id)
+                );
+
+        customer.setNombre(request.getNombre());
+        customer.setApellidoOrazonSocial(request.getApellidoOrazonSocial());
+        customer.setDireccion(request.getDireccion());
+        customer.setTelefono(request.getTelefono());
+        customer.setCorreoElectronico(request.getCorreoElectronico());
+
+        Customer updatedCustomer = customerRepository.save(customer);
+
+        return customerMapper.toResponse(updatedCustomer);
+    }
+
+    public CustomerSaldoDTO getSaldoCliente(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() ->
+                        new CustomerNotFoundException(id)
+                );
+        return customerMapper.toSaldoResponse(customer);
     }
 
     public List<ProductDTO> getProductosDeCliente(Long clienteId) {

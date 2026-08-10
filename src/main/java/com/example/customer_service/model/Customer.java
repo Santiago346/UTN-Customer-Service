@@ -3,8 +3,10 @@ package com.example.customer_service.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Entity
-@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,7 +24,7 @@ public class Customer {
         private String direccion;
         private String telefono;
         private String correoElectronico;
-        private String fechaAlta;
-        private Double saldo;
+        private LocalDate fechaAlta;
+        private BigDecimal saldo;
 
 }

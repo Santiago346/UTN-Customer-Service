@@ -3,6 +3,9 @@ package com.example.customer_service.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class CustomerRequestDTO {
@@ -13,6 +16,6 @@ public class CustomerRequestDTO {
     private String direccion;
     private String telefono;
     private String correoElectronico;
-    private String fechaAlta;
-    private Double saldo;
+    private LocalDate fechaAlta;
+    private BigDecimal saldo;
 }

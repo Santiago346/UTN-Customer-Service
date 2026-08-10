@@ -6,6 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Configuration
 public class DataLoader {
 
@@ -21,8 +24,8 @@ public class DataLoader {
             c1.setDireccion("Av. Siempre Viva 123");
             c1.setTelefono("1122334455");
             c1.setCorreoElectronico("juan.perez@mail.com");
-            c1.setFechaAlta("2026-01-15");
-            c1.setSaldo(150000.0);
+            c1.setFechaAlta(LocalDate.of(2026, 1, 15));
+            c1.setSaldo(new BigDecimal("150000"));
             repository.save(c1);
 
             Customer c2 = new Customer();
@@ -32,8 +35,8 @@ public class DataLoader {
             c2.setDireccion("Calle Falsa 456");
             c2.setTelefono("1133445566");
             c2.setCorreoElectronico("maria.gonzalez@mail.com");
-            c2.setFechaAlta("2026-02-20");
-            c2.setSaldo(500000.0);
+            c2.setFechaAlta(LocalDate.of(2026, 2, 20));
+            c2.setSaldo(new BigDecimal("500000"));
             repository.save(c2);
 
             Customer c3 = new Customer();
@@ -43,8 +46,8 @@ public class DataLoader {
             c3.setDireccion("Ruta 8 Km 45");
             c3.setTelefono("1144556677");
             c3.setCorreoElectronico("contacto@xyz.com");
-            c3.setFechaAlta("2026-03-10");
-            c3.setSaldo(2000000.0);
+            c3.setFechaAlta(LocalDate.of(2026, 3, 10));
+            c3.setSaldo(new BigDecimal("2000000"));
             repository.save(c3);
 
         };
