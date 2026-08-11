@@ -61,6 +61,7 @@ public class CustomerService {
 
         customer.setNombre(request.getNombre());
         customer.setApellidoOrazonSocial(request.getApellidoOrazonSocial());
+        customer.setDocumentoOCuit(request.getDocumentoOCuit());
         customer.setDireccion(request.getDireccion());
         customer.setTelefono(request.getTelefono());
         customer.setCorreoElectronico(request.getCorreoElectronico());
