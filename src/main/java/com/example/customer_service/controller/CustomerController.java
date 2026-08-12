@@ -2,6 +2,7 @@ package com.example.customer_service.controller;
 
 import com.example.customer_service.dtos.CustomerDTO;
 import com.example.customer_service.dtos.CustomerRequestDTO;
+import com.example.customer_service.dtos.CustomerSaldoDTO;
 import com.example.customer_service.dtos.ProductDTO;
 import com.example.customer_service.service.CustomerService;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,6 @@ public class CustomerController {
 
     @GetMapping
     public List<CustomerDTO> getCustomers() {
-        System.out.println("LLEGO AL ENDPOINT");
         return service.getCustomers();
     }
 
@@ -40,6 +40,16 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCustomer(@PathVariable Long id) {
         service.deleteCustomer(id);
+    }
+
+    @PutMapping("/{id}")
+    public CustomerDTO updateCustomer(@PathVariable Long id, @RequestBody CustomerRequestDTO request) {
+        return service.updateCustomer(id, request);
+    }
+
+    @GetMapping("/{id}/saldo")
+    public CustomerSaldoDTO getSaldoCliente(@PathVariable Long id) {
+        return service.getSaldoCliente(id);
     }
 
     @GetMapping("/{id}/productos")

@@ -3,6 +3,8 @@ package com.example.customer_service.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class CustomerDTO {
@@ -13,5 +15,5 @@ public class CustomerDTO {
     private String direccion;
     private String telefono;
     private String correoElectronico;
-    private String fechaAlta;
+    private LocalDate fechaAlta;
 }

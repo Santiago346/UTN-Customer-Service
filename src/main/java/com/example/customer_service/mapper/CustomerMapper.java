@@ -2,6 +2,7 @@ package com.example.customer_service.mapper;
 
 import com.example.customer_service.dtos.CustomerDTO;
 import com.example.customer_service.dtos.CustomerRequestDTO;
+import com.example.customer_service.dtos.CustomerSaldoDTO;
 import com.example.customer_service.model.Customer;
 import org.springframework.stereotype.Component;
 
@@ -37,5 +38,12 @@ public class CustomerMapper {
         customer.setSaldo(request.getSaldo());
 
         return customer;
+    }
+
+    public CustomerSaldoDTO toSaldoResponse(Customer customer) {
+        CustomerSaldoDTO response = new CustomerSaldoDTO();
+        response.setId(customer.getId());
+        response.setSaldo(customer.getSaldo());
+        return response;
     }
 }

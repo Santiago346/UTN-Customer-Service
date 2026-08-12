@@ -19,7 +19,7 @@ spring:
   application:
     name: customer-service
   config:
-    import: optional:configserver:http://localhost:8888
+    import: configserver:http://localhost:8888
 ```
 
 ## Modelo de datos
@@ -37,7 +37,9 @@ Vía `ProductClient` (interfaz `@FeignClient(name = "product-service")`).
 | GET | `/clientes` | Lista todos los clientes |
 | GET | `/clientes/{id}` | Obtiene un cliente por id |
 | POST | `/clientes` | Crea un cliente nuevo |
+| PUT | `/clientes/{id}` | Actualiza un cliente existente |
 | DELETE | `/clientes/{id}` | Elimina un cliente |
+| GET | `/clientes/{id}/saldo` | Obtiene el saldo de un cliente |
 | GET | `/clientes/{id}/productos` | Lista los productos del cliente (vía Feign a product-service) |
 
 ### Ejemplo — POST /clientes
